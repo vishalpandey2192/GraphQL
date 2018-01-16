@@ -1,0 +1,17 @@
+import {GraphQLString, GraphQLNonNull} from 'graphql';
+import { Author } from "../types/Author";
+import { fakeDatabase } from "../../FakeDatabase";
+
+export default {
+    aurthor:{
+        type: Author,
+        description: 'Get a list of recent blog posts',
+        args:{
+            id:{type:new GraphQLNonNull(GraphQLString)}
+        },
+        resolve: function(parent, {id}){
+            return fakeDatabase.getAuthor(id);
+        }
+
+    }
+}
